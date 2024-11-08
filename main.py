@@ -39,3 +39,16 @@ print(f"Acurácia do modelo: {accuracy:.4f}")
 
 # Relatório de Classificação
 print(classification_report(y_teste, y_pred))
+
+print("Input:")
+dados_usuario = input()
+dados_usuario = list(map(float, dados_usuario.split(',')))
+
+dados_usuario_scaled = scaler.transform([dados_usuario])
+
+previsao = mlp.predict(dados_usuario_scaled)
+
+if previsao[0] == 0:
+    print("O canal de vendas previsto é: HoReCa")
+else:
+    print("O canal de vendas previsto é: Retail")
